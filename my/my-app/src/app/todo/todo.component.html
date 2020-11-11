@@ -1,0 +1,49 @@
+<h1>{{title}}</h1>
+<div>
+  <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <input type="text" nz-input placeholder="search" />
+  </nz-input-group>
+  <ng-template #suffixButton>
+    <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+  </ng-template>
+    <button nz-button nzType="default">Sort by description</button>
+    <button nz-button nzType="primary">Sort by creation time</button>
+    <button nz-button nzType="default">Show/hidden done</button>
+</div>
+<div>
+    <table>
+         <thead>
+             <tr>
+                 <th>
+                     <input type="checkbox" [(ngModel)]="selectAll">
+                 </th>
+                 <th>id</th>
+                 <th>description</th>
+                 <th>createdTime</th>
+                 <th>favorite</th>
+                 <th>done</th>
+                 <th>children</th>
+                 <th>Operate</th>
+            </tr>
+         </thead>
+         <tbody>
+             <tr *ngFor = "let i of items$">
+                 <td>
+                     <input type="checkbox">
+                 </td>
+                 <td><input type="text" [(ngModel)] = i.id></td>
+                 <td><input type="text" [(ngModel)] = i.description></td>
+                 <td><input type="text" [(ngModel)] = i.createdTime></td>
+                 <td><input type="text" [(ngModel)] = i.favorite></td>
+                 <td><input type="text" [(ngModel)] = i.done></td>
+                 <td><input type="text" [(ngModel)] = i.children.length></td>
+                 <td>
+                     <button nz-button nzType="primary" (click)="delete(i.id)">Delete</button>
+                     <button nz-button nzType="primary" (click)="switch(i.id)">goto</button>
+                </td>
+             </tr>
+         </tbody>
+    </table>
+</div>
+<div>
+<td  style="text-align:center"><button nz-button nzType="primary" style="color:red" (click)="add()">Create item</button>

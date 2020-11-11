@@ -1,0 +1,14 @@
+<div  *ngFor = "let item of items$">
+  <ul *ngFor = "let child of item?.children">
+    <li><strong>description:</strong> {{child['description']}}</li>
+    <li><strong>done:</strong> {{child['done']}}</li>
+    <li><strong>createdTime:</strong> {{child['createdTime']}}</li>
+  </ul>
+</div>
+<div>
+  <button nz-button nzType="primary" (click)="switch()">Back</button>
+</div>
+
+
+
+
